@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>LeetCode 830 Positions of Large Groups 较大分组的位置 题解 | 白叶&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目地址 830.Positions of Large Groups DescriptionIn a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = “abbxxxxzyy” has the group">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 830 Positions of Large Groups 较大分组的位置 题解">
+<meta property="og:url" content="http://sheldonzheng.github.io/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/index.html">
+<meta property="og:site_name" content="白叶&#39;s Blog">
+<meta property="og:description" content="题目地址 830.Positions of Large Groups DescriptionIn a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = “abbxxxxzyy” has the group">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-15T09:54:14.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 830 Positions of Large Groups 较大分组的位置 题解">
+<meta name="twitter:description" content="题目地址 830.Positions of Large Groups DescriptionIn a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = “abbxxxxzyy” has the group">
+  
+    <link rel="alternate" href="/atom.xml" title="白叶&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">白叶&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sheldonzheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/" class="article-date">
+  <time datetime="2019-05-15T09:54:04.000Z" itemprop="datePublished">2019-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode 830 Positions of Large Groups 较大分组的位置 题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目地址</p>
+<p>830.Positions of Large Groups</p>
+<p>Description<br>In a string S of lowercase letters, these letters form consecutive groups of the same character.</p>
+<p>For example, a string like S = “abbxxxxzyy” has the groups “a”, “bb”, “xxxx”, “z” and “yy”.</p>
+<p>Call a group large if it has 3 or more characters. We would like the starting and ending positions of every large group.</p>
+<p>The final answer should be in lexicographic order.</p>
+<p>Example 1:</p>
+<p>Input: “abbxxxxzzy”<br>Output: [[3,6]]<br>Explanation: “xxxx” is the single large group with starting  3 and ending positions 6.<br>Example 2:</p>
+<p>Input: “abc”<br>Output: []<br>Explanation: We have “a”,”b” and “c” but no large group.<br>Example 3:</p>
+<p>Input: “abcdddeeeeaabbbcd”<br>Output: [[3,5],[6,9],[12,14]]<br>Note: 1 &lt;= S.length &lt;= 1000</p>
+<p>题解<br>按顺序遍历一遍，找出大于三个的数就可以了。</p>
+<p>class Solution {<br>    public List&lt;List<integer>&gt; largeGroupPositions(String S) {<br>        List&lt;List<integer>&gt; res = new ArrayList&lt;&gt;();<br>        if (S == null || S.length() == 0 || S.length() &lt; 3) {<br>            return res;<br>        }<br>        char[] list = S.toCharArray();<br>        char p = list[0];<br>        int s = 0;<br>        int c = 0;<br>        for (int i = 0; i &lt; list.length; i++) {<br>            if (p == list[i]) {<br>                c++;<br>            } else {<br>                p = list[i];<br>                if (c &gt;= 3) {<br>                    List<integer> temp = new ArrayList&lt;&gt;();<br>                    temp.add(s);<br>                    temp.add(i - 1);<br>                    res.add(temp);<br>                }<br>                c = 1;<br>                s = i;<br>            }<br>        }<br>        if (c &gt;= 3) {<br>            List<integer> temp = new ArrayList&lt;&gt;();<br>            temp.add(s);<br>            temp.add(list.length - 1);<br>            res.add(temp);<br>        }<br>        return res;<br>    }<br>}</integer></integer></integer></integer></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sheldonzheng.github.io/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/" data-id="cjvp1vnih000ssm6ww7svhcdt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/15/LeetCode-904-Fruit-Into-Baskets-水果成篮-题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LeetCode 904 Fruit Into Baskets 水果成篮 题解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/15/LeetCode-678-Valid-Parenthesis-String-有效的括号字符串-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LeetCode 678 Valid Parenthesis String 有效的括号字符串 题解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode-题解/">LeetCode 题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Uncategorized/">Uncategorized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LeetCode-题解/" style="font-size: 20px;">LeetCode 题解</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Uncategorized/" style="font-size: 10px;">Uncategorized</a> <a href="/tags/二叉树/" style="font-size: 13.33px;">二叉树</a> <a href="/tags/算法/" style="font-size: 16.67px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-155-MinStack最小栈题解/">LeetCode.155.MinStack最小栈题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-207-CourseSchedule-课程表题解/">LeetCode.207.CourseSchedule.课程表题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解/">LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-904-Fruit-Into-Baskets-水果成篮-题解/">LeetCode 904 Fruit Into Baskets 水果成篮 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/">LeetCode 830 Positions of Large Groups 较大分组的位置 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 HANG ZHENG<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

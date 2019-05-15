@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>LeetCode 148 Sort List 排序链表 题解 | 白叶&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目地址 Description:Sort a linked list in O(n log n) time using constant space complexity. Example 1: Input: 4-&amp;gt;2-&amp;gt;1-&amp;gt;3Output: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4Example 2: Input: -1-&amp;gt;5-&amp;gt;3-&amp;gt;4-&amp;gt;0Outp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 148 Sort List 排序链表 题解">
+<meta property="og:url" content="http://sheldonzheng.github.io/2019/05/15/LeetCode-148-Sort-List-排序链表-题解/index.html">
+<meta property="og:site_name" content="白叶&#39;s Blog">
+<meta property="og:description" content="题目地址 Description:Sort a linked list in O(n log n) time using constant space complexity. Example 1: Input: 4-&amp;gt;2-&amp;gt;1-&amp;gt;3Output: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4Example 2: Input: -1-&amp;gt;5-&amp;gt;3-&amp;gt;4-&amp;gt;0Outp">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-15T09:20:11.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 148 Sort List 排序链表 题解">
+<meta name="twitter:description" content="题目地址 Description:Sort a linked list in O(n log n) time using constant space complexity. Example 1: Input: 4-&amp;gt;2-&amp;gt;1-&amp;gt;3Output: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4Example 2: Input: -1-&amp;gt;5-&amp;gt;3-&amp;gt;4-&amp;gt;0Outp">
+  
+    <link rel="alternate" href="/atom.xml" title="白叶&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">白叶&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sheldonzheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LeetCode-148-Sort-List-排序链表-题解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/15/LeetCode-148-Sort-List-排序链表-题解/" class="article-date">
+  <time datetime="2019-05-15T09:20:04.000Z" itemprop="datePublished">2019-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode 148 Sort List 排序链表 题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目地址</p>
+<p>Description:<br>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<p>Example 1:</p>
+<p>Input: 4-&gt;2-&gt;1-&gt;3<br>Output: 1-&gt;2-&gt;3-&gt;4<br>Example 2:</p>
+<p>Input: -1-&gt;5-&gt;3-&gt;4-&gt;0<br>Output: -1-&gt;0-&gt;3-&gt;4-&gt;5<br>题解:<br>要求对一个链表进行排序，时间复杂度要求O(n log n)，占用常数级空间。</p>
+<p>简单一想，可以把链表里所有的数抽出来放到数组里然后排序，然后重构链表；</p>
+<p>或者直接对链表进行归并排序，但是怎么取中位数呢？</p>
+<p>​ 使用两个指针，一个一次走两步，一个一次走一步，快的那个走到头了，慢的那个就走到中间了；</p>
+<p>然后归并起来就可以了；</p>
+<p>/**</p>
+<ul>
+<li>Definition for singly-linked list.</li>
+<li>public class ListNode {</li>
+<li>int val;</li>
+<li>ListNode next;</li>
+<li>ListNode(int x) { val = x; }</li>
+<li><p>}<br>*/<br>class Solution {<br>  public ListNode sortList(ListNode head) {</p>
+<pre><code>if (head == null || head.next == null) {
+    return head;
+}
+ListNode fast = head,slow = head;
+
+//cut link
+ListNode cut = null;
+
+while (fast != null &amp;&amp; fast.next != null) {
+    cut = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+}
+
+//cut link
+cut.next = null;
+</code></pre></li>
+</ul>
+<pre><code>    return mergeTwoListNode(sortList(head),sortList(slow));
+}
+
+public ListNode mergeTwoListNode(ListNode o ,ListNode t) {
+    ListNode c = new ListNode(-1);
+    ListNode p = c;
+
+    while (o != null &amp;&amp; t != null) {
+        if (o.val &lt; t.val) {
+            p.next = o;
+            o = o.next;
+        } else {
+            p.next = t;
+            t = t.next;
+        }
+        p = p.next;
+    }
+
+    if (o != null) {
+        p.next = o;
+    }
+    if (t != null) {
+        p.next = t;
+    }
+
+    return c.next;
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sheldonzheng.github.io/2019/05/15/LeetCode-148-Sort-List-排序链表-题解/" data-id="cjvp1vni30008sm6wfy4y2ovd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/15/LeetCode-678-Valid-Parenthesis-String-有效的括号字符串-题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LeetCode 678 Valid Parenthesis String 有效的括号字符串 题解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/15/LeetCode-274-H-Index-H指数-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LeetCode.274.H-Index.H指数.题解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode-题解/">LeetCode 题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Uncategorized/">Uncategorized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LeetCode-题解/" style="font-size: 20px;">LeetCode 题解</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Uncategorized/" style="font-size: 10px;">Uncategorized</a> <a href="/tags/二叉树/" style="font-size: 13.33px;">二叉树</a> <a href="/tags/算法/" style="font-size: 16.67px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-155-MinStack最小栈题解/">LeetCode.155.MinStack最小栈题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-207-CourseSchedule-课程表题解/">LeetCode.207.CourseSchedule.课程表题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解/">LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-904-Fruit-Into-Baskets-水果成篮-题解/">LeetCode 904 Fruit Into Baskets 水果成篮 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/">LeetCode 830 Positions of Large Groups 较大分组的位置 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 HANG ZHENG<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

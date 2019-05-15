@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解 | 白叶&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目地址 842.Split Array into Fibonacci Sequence Given a string S of digits, such as S = “123456579”, we can split it into a Fibonacci-like sequence [123, 456, 579]. Formally, a Fibonacci-like sequence is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解">
+<meta property="og:url" content="http://sheldonzheng.github.io/2019/05/15/LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解/index.html">
+<meta property="og:site_name" content="白叶&#39;s Blog">
+<meta property="og:description" content="题目地址 842.Split Array into Fibonacci Sequence Given a string S of digits, such as S = “123456579”, we can split it into a Fibonacci-like sequence [123, 456, 579]. Formally, a Fibonacci-like sequence is">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-15T09:55:00.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解">
+<meta name="twitter:description" content="题目地址 842.Split Array into Fibonacci Sequence Given a string S of digits, such as S = “123456579”, we can split it into a Fibonacci-like sequence [123, 456, 579]. Formally, a Fibonacci-like sequence is">
+  
+    <link rel="alternate" href="/atom.xml" title="白叶&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">白叶&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://sheldonzheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/15/LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解/" class="article-date">
+  <time datetime="2019-05-15T09:54:53.000Z" itemprop="datePublished">2019-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目地址</p>
+<p>842.Split Array into Fibonacci Sequence</p>
+<p>Given a string S of digits, such as S = “123456579”, we can split it into a Fibonacci-like sequence [123, 456, 579].</p>
+<p>Formally, a Fibonacci-like sequence is a list F of non-negative integers such that:</p>
+<p>0 &lt;= F[i] &lt;= 2^31 - 1, (that is, each integer fits a 32-bit signed integer type);<br>F.length &gt;= 3;<br>andF[i] + F[i+1] = F[i+2]for all 0 &lt;= i &lt; F.length - 2.<br>Also, note that when splitting the string into pieces, each piece must not have extra leading zeroes, except if the piece is the number 0 itself.</p>
+<p>Return any Fibonacci-like sequence split from S, or return [] if it cannot be done.</p>
+<p>Example 1:</p>
+<p>Input: “123456579”<br>Output: [123,456,579]<br>Example 2:</p>
+<p>Input: “11235813”<br>Output: [1,1,2,3,5,8,13]<br>Example 3:</p>
+<p>Input: “112358130”<br>Output: []<br>Explanation: The task is impossible.<br>Example 4:</p>
+<p>Input: “0123”<br>Output: []<br>Explanation: Leading zeroes are not allowed, so “01”, “2”, “3” is not valid.<br>Example 5:</p>
+<p>Input: “1101111”<br>Output: [110, 1, 111]<br>Explanation: The output [11, 0, 11, 11] would also be accepted.<br>Note:</p>
+<p>1 &lt;= S.length &lt;= 200<br>S contains only digits.<br>解题思路<br>看到题目的第一反应是在一个无序数组里找数来拼成裴波那契数列，那这个有点难，没想到什么办法；</p>
+<p>然后看了几个例子，发现是在有序数组里寻找，一下子简单很多；</p>
+<p>用回溯法；</p>
+<p>回溯法的详细解释，请点击上面的链接；</p>
+<p>简单来说，就是一步一步地尝试解，如果不行，就回退；</p>
+<p>​ 举个例子，我们首先把数组的第一位添加到结果集里，然后把第二位也添加到结果集里，发现第三位不等于前两位之和，这时候就得回退，不能用第一位和第二位啦，删除结果集里已有的这两个数，尝试把第一位和第二位作为一个数放到结果集里，然后把第三位也放进去，判断第四位是否等于前两个数的和……</p>
+<p>代码:</p>
+<p>class Solution {<br>    public List<integer> splitIntoFibonacci(String S) {<br>        List<integer> res = new ArrayList&lt;&gt;();<br>        if (S == null || S.length() == 0) {<br>            return res;<br>        }<br>        dfs(S,res,0);<br>        return res;</integer></integer></p>
+<pre><code>}
+
+private boolean dfs(String S,List&lt;Integer&gt; res,int index) {
+    //已有解，可以返回了
+    if (S.length() == index &amp;&amp; res.size() &gt;= 3) {
+        return true;
+    }
+    for (int i = index; i &lt; S.length(); i++) {
+        if (S.charAt(index) == &apos;0&apos; &amp;&amp; i &gt; index) {
+            return false;
+        }
+        Long num = Long.parseLong(S.substring(index,i + 1));
+        //超出范围了
+        if (num &gt; Integer.MAX_VALUE) {
+            return false;
+        }
+
+        //数组里有两个以上的数，判断这个数能不能符合要求
+        if (res.size() &gt;= 2 &amp;&amp; (num &gt; res.get(res.size() - 1) + res.get(res.size() - 2))) {
+            return false;
+        }
+
+        //还不到两个数，或者符合要求，添加进去，继续往前走
+        if (res.size() &lt; 2 || (num == res.get(res.size() - 1) + res.get(res.size() - 2))) {
+            res.add(num.intValue());
+            if (dfs(S,res,i + 1)) {
+                return true;
+            }
+            //删除刚加进去的，回头
+            res.remove(res.size() - 1);
+        }
+    }
+    return false;
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sheldonzheng.github.io/2019/05/15/LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解/" data-id="cjvp1vnii000usm6wp0dwhqq2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/15/LeetCode-207-CourseSchedule-课程表题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LeetCode.207.CourseSchedule.课程表题解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/15/LeetCode-904-Fruit-Into-Baskets-水果成篮-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LeetCode 904 Fruit Into Baskets 水果成篮 题解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode-题解/">LeetCode 题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Uncategorized/">Uncategorized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LeetCode-题解/" style="font-size: 20px;">LeetCode 题解</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Uncategorized/" style="font-size: 10px;">Uncategorized</a> <a href="/tags/二叉树/" style="font-size: 13.33px;">二叉树</a> <a href="/tags/算法/" style="font-size: 16.67px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-155-MinStack最小栈题解/">LeetCode.155.MinStack最小栈题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-207-CourseSchedule-课程表题解/">LeetCode.207.CourseSchedule.课程表题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-842-SplitArrayIntoFibonacciSequence-将数组拆分成裴波那契数列题解/">LeetCode.842.SplitArrayIntoFibonacciSequence.将数组拆分成裴波那契数列题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-904-Fruit-Into-Baskets-水果成篮-题解/">LeetCode 904 Fruit Into Baskets 水果成篮 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/">LeetCode 830 Positions of Large Groups 较大分组的位置 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 HANG ZHENG<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
