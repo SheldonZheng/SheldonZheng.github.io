@@ -232,6 +232,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/30/LeetCode-567-PermutationInString题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/30/LeetCode-567-PermutationInString题解/" itemprop="url">LeetCode.567.PermutationInString题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-30T17:13:35+08:00">
+                2019-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode题解/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="LeetCode-567-Permutation-in-String-题解"><a href="#LeetCode-567-Permutation-in-String-题解" class="headerlink" title="LeetCode 567 Permutation in String 题解"></a>LeetCode 567 Permutation in String 题解</h2><p><a href="https://leetcode.com/problems/permutation-in-string/" target="_blank" rel="noopener">题目地址</a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given two strings <strong>s1</strong> and <strong>s2</strong>, write a function to return true if <strong>s2</strong> contains the permutation of <strong>s1</strong>. In other words, one of the first string’s permutations is the <strong>substring</strong> of the second string.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s1 = &quot;ab&quot; s2 = &quot;eidbaooo&quot;</span><br><span class="line">Output: True</span><br><span class="line">Explanation: s2 contains one permutation of s1 (&quot;ba&quot;).</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:s1= &quot;ab&quot; s2 = &quot;eidboaoo&quot;</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>The input strings only contain lower case letters.</li>
+<li>The length of both given strings is in range [1, 10,000].</li>
+</ol>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1 == <span class="keyword">null</span> || s2 == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (s1.length() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s1.length() &gt; s2.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] ba = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">int</span>[] slideArray = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> slideWidth = s1.length();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> slideS = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> slideE = slideWidth;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//init ba</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length(); i++) &#123;</span><br><span class="line">            ba[s1.charAt(i) - <span class="string">'a'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//init sideArray</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length(); i++) &#123;</span><br><span class="line">            slideArray[s2.charAt(i) - <span class="string">'a'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isEqual(ba,slideArray)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (slideE &lt; s2.length()) &#123;</span><br><span class="line">            slideArray[s2.charAt(slideS) - <span class="string">'a'</span>]--;</span><br><span class="line">            slideArray[s2.charAt(slideE) - <span class="string">'a'</span>]++;</span><br><span class="line">            <span class="comment">//iteration</span></span><br><span class="line">            slideS++;</span><br><span class="line">            slideE++;</span><br><span class="line">            <span class="keyword">if</span> (isEqual(ba,slideArray)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEqual</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span>[] b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i] != b[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-155-MinStack最小栈题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1696,154 +1849,6 @@ public List&lt;String&gt; find(String s) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-795-Number-of-Subarrays-with-BoundedMaximum-区间子数组个数-题解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HANG ZHENG">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白叶's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/15/LeetCode-795-Number-of-Subarrays-with-BoundedMaximum-区间子数组个数-题解/" itemprop="url">LeetCode 795 Number of Subarrays with BoundedMaximum 区间子数组个数 题解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:18:58+08:00">
-                2019-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>题目地址</p>
-<p>Description:<br>We are given an array A of positive integers, and two positive integers L and R (L &lt;= R).</p>
-<p>Return the number of (contiguous, non-empty) subarrays such that the value of the maximum array element in that subarray is at least Land at most R.</p>
-<p>Example :<br>Input:<br>A = [2, 1, 4, 3]<br>L = 2<br>R = 3<br>Output: 3<br>Explanation: There are three subarrays that meet the requirements: [2], [2, 1], [3].<br>Note:</p>
-<p>L, R and A[i] will be an integer in the range [0, 10^9].<br>The length of A will be in the range of [1, 50000].<br>题解：<br>注意审题，题目中说，连续、非空、且 “最大元素”满足 &gt;= L &lt;=R，只要最大元素满足就可以了；</p>
-<p>定义一个maxL，最大长度，即包含一个最大元素 满足要求的 子数组的 最大长度</p>
-<p>定义一个lp ，left point 左指针</p>
-<p>右指针先往前挪，如果数满足条件，更新结果集和maxL的值</p>
-<p>如果数小于L，那么更新结果集，加上maxL的数</p>
-<p>如果是别的情况，重置maxL，将左指针挪到跟右指针相同的位置</p>
-<p>class Solution {<br>    public int numSubarrayBoundedMax(int[] A, int L, int R) {<br>        if (A == null || A.length == 0) {<br>            return 0;<br>        }<br>        //left point<br>        int lp = 0;<br>        int res = 0;</p>
-<pre><code>    int maxL = 0;
-    //right point
-    for (int rp = 0; rp &lt; A.length; rp++) {
-        if (A[rp] &gt;= L &amp;&amp; A[rp] &lt;= R) {
-            res += (rp - lp + 1);
-            maxL = (rp - lp + 1);
-        } else if (A[rp] &lt; L) {
-            res += maxL;
-        } else {
-            //reset maxL
-            maxL = 0;
-            //move left point
-            lp = rp + 1;
-        }
-    }
-    return res;
-}
-</code></pre><p>}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1894,12 +1899,21 @@ public List&lt;String&gt; find(String s) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
             
 
             
@@ -1907,7 +1921,7 @@ public List&lt;String&gt; find(String s) {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

@@ -232,6 +232,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/18/LeetCode-94-Binary-Tree-Inorder-Traversal-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/18/LeetCode-94-Binary-Tree-Inorder-Traversal-题解/" itemprop="url">LeetCode.94.Binary Tree Inorder Traversal 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-18T10:55:47+08:00">
+                2016-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">原题地址</a></p>
+<p>题目描述：Given a binary tree, return the <em>inorder</em> traversal of its nodes&#8217; values.</p>
+<p>&nbsp;</p>
+<p>简单来说就是一个二叉树的中序遍历。题目下面有Note，要求不要采用递归的解法。这里递归的解法是最容易理解的，但是一方面是慢，另一方面是要占用大量的空间，容易爆栈。这里采用循环的方式解；</p>
+<p>构建一个指针p，如果p不为空，那么将p入栈，p指向p的左节点；</p>
+<p>如果p为空，说明已经走到尽头了，那么将栈顶弹出，加入结果集，并且访问右节点；</p>
+<p>代码：</p>
+<pre>public List&lt;Integer&gt; inorderTraversal(TreeNode root) {
+
+    List&lt;Integer&gt; result = new ArrayList&lt;&gt;();
+
+    Stack&lt;TreeNode&gt; stk = new Stack&lt;&gt;();
+
+    TreeNode p = root;
+
+    while (p != null || !stk.empty())
+    {
+        if(p != null)
+        {
+            stk.push(p);
+            p = p.left;
+        }
+        else
+        {
+            p = stk.pop();
+            result.add(p.val);
+            p = p.right;
+        }
+    }
+
+    return result;
+}
+
+private class TreeNode {
+         int val;
+         TreeNode left;
+         TreeNode right;
+         TreeNode(int x) { val = x; }
+}</pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/17/LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,12 +902,21 @@ public class ConvertSortedArrayToBST {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
             
 
             
@@ -758,7 +924,7 @@ public class ConvertSortedArrayToBST {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
