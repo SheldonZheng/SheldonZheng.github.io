@@ -232,6 +232,144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/06/05/LeetCode-71-SimplifyPath题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/05/LeetCode-71-SimplifyPath题解/" itemprop="url">LeetCode.71.SimplifyPath题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-05T18:17:40+08:00">
+                2019-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="LeetCode-71-Simplify-Path-题解"><a href="#LeetCode-71-Simplify-Path-题解" class="headerlink" title="LeetCode 71 Simplify Path 题解"></a>LeetCode 71 Simplify Path 题解</h2><p><a href="https://leetcode.com/problems/simplify-path/" target="_blank" rel="noopener">题目地址</a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given an <strong>absolute path</strong> for a file (Unix-style), simplify it. Or in other words, convert it to the <strong>canonical path</strong>.</p>
+<p>In a UNIX-style file system, a period <code>.</code> refers to the current directory. Furthermore, a double period <code>..</code> moves the directory up a level. For more information, see: <a href="https://www.linuxnix.com/abslute-path-vs-relative-path-in-linuxunix/" target="_blank" rel="noopener">Absolute path vs relative path in Linux/Unix</a></p>
+<p>Note that the returned canonical path must always begin with a slash <code>/</code>, and there must be only a single slash <code>/</code> between two directory names. The last directory name (if it exists) <strong>must not</strong> end with a trailing <code>/</code>. Also, the canonical path must be the <strong>shortest</strong>string representing the absolute path.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;/home/&quot;</span><br><span class="line">Output: &quot;/home&quot;</span><br><span class="line">Explanation: Note that there is no trailing slash after the last directory name.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;/../&quot;</span><br><span class="line">Output: &quot;/&quot;</span><br><span class="line">Explanation: Going one level up from the root directory is a no-op, as the root level is the highest level you can go.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;/home//foo/&quot;</span><br><span class="line">Output: &quot;/home/foo&quot;</span><br><span class="line">Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;/a/./b/../../c/&quot;</span><br><span class="line">Output: &quot;/c&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Example 5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;/a/../../b/../c//.//&quot;</span><br><span class="line">Output: &quot;/c&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Example 6:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;/a//b////c/d//././/..&quot;</span><br><span class="line">Output: &quot;/a/b/c&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解:"></a>题解:</h3><p>首先想的比较复杂，构造一个结构去存当前目录，然后从前向后扫描字符串，去掉重复的/，需要回退就回退；</p>
+<p>看了解法其实用一个栈就可以。。用String的split方法会自动去掉多余的/。。。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">simplifyPath</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (path == <span class="keyword">null</span> || path.length() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//clear</span></span><br><span class="line">        Deque&lt;String&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        Set&lt;String&gt; skip = <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">".."</span>, <span class="string">"."</span>, <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">        String[] splited = path.split(<span class="string">"/"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; splited.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (splited[i].equals(<span class="string">".."</span>) &amp;&amp; !stack.isEmpty()) &#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!skip.contains(splited[i])) &#123;</span><br><span class="line">                stack.push(splited[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (stack.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"/"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (String s : stack) &#123;</span><br><span class="line">            result = <span class="string">"/"</span> + s + result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/30/LeetCode-567-PermutationInString题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1684,173 +1822,6 @@ public ListNode mergeTwoListNode(ListNode o ,ListNode t) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-816-Ambiguous-Coordinates-模糊坐标-题解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HANG ZHENG">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白叶's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/15/LeetCode-816-Ambiguous-Coordinates-模糊坐标-题解/" itemprop="url">LeetCode 816 Ambiguous Coordinates 模糊坐标 题解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:19:23+08:00">
-                2019-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>题目地址</p>
-<p>Description:<br>We had some 2-dimensional coordinates, like “(1, 3)” or “(2, 0.5)”. Then, we removed all commas, decimal points, and spaces, and ended up with the string S. Return a list of strings representing all possibilities for what our original coordinates could have been.</p>
-<p>Our original representation never had extraneous zeroes, so we never started with numbers like “00”, “0.0”, “0.00”, “1.0”, “001”, “00.01”, or any other number that can be represented with less digits. Also, a decimal point within a number never occurs without at least one digit occuring before it, so we never started with numbers like “.1”.</p>
-<p>The final answer list can be returned in any order. Also note that all coordinates in the final answer have exactly one space between them (occurring after the comma.)</p>
-<p>Example 1:<br>Input: “(123)”<br>Output: [“(1, 23)”, “(12, 3)”, “(1.2, 3)”, “(1, 2.3)”]<br>Example 2:<br>Input: “(00011)”<br>Output:  [“(0.001, 1)”, “(0, 0.011)”]<br>Explanation:<br>0.0, 00, 0001 or 00.01 are not allowed.<br>Example 3:<br>Input: “(0123)”<br>Output: [“(0, 123)”, “(0, 12.3)”, “(0, 1.23)”, “(0.1, 23)”, “(0.1, 2.3)”, “(0.12, 3)”]<br>Example 4:<br>Input: “(100)”<br>Output: [(10, 0)]<br>Explanation:<br>1.0 is not allowed.<br>Note:</p>
-<p>4 &lt;= S.length &lt;= 12.<br>S[0] = “(“, S[S.length - 1] = “)”, and the other elements in S are digits.<br>题解:<br>首先要明确对于一个字符串，有几种不允许出现的情况，实现一个函数，依次判断这些特殊情况，之后剩下的就是将小数点从前往后依次挪，将每一种可能性合并在一起；</p>
-<p>将给的字符串分成两部分，从循环求解所有的可能性；</p>
-<p>class Solution {<br>     public List<string> ambiguousCoordinates(String S) {<br>        int l = S.length();<br>        List<string> res = new ArrayList&lt;&gt;();<br>        for (int i = 1; i &lt; l - 2; i++) {<br>            List<string> tempA = find(S.substring(1, i + 1));<br>            List<string> tempB = find(S.substring(i + 1,l - 1));</string></string></string></string></p>
-<pre><code>        //merge
-        tempA.forEach((a) -&gt; {
-            tempB.forEach((b) -&gt; {
-                res.add(&quot;(&quot;.concat(a).concat(&quot;, &quot;).concat(b).concat(&quot;)&quot;));
-            });
-        });
-    }
-    return res;
-}
-
-public List&lt;String&gt; find(String s) {
-    int l = s.length();
-    List&lt;String&gt; res = new ArrayList&lt;&gt;();
-    //0XXX0
-    if (l == 0 || (l &gt; 1 &amp;&amp; s.charAt(0) == &apos;0&apos; &amp;&amp; s.charAt(l - 1) == &apos;0&apos;)) {
-        return res;
-    }
-
-    //0XXX
-    if (l &gt; 1 &amp;&amp; s.charAt(0) == &apos;0&apos;) {
-        res.add(&quot;0.&quot;.concat(s.substring(1,l)));
-        return res;
-    }
-    res.add(s);
-    //X
-    if (l == 1) {
-        return res;
-    }
-    //XXX0
-    if (s.charAt(l - 1) == &apos;0&apos;) {
-        return res;
-    }
-
-    for (int i = 1; i &lt; l; i++) {
-        res.add(s.substring(0,i).concat(&quot;.&quot;).concat(s.substring(i,l)));
-    }
-    return res;
-
-}
-</code></pre><p>}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1901,7 +1872,7 @@ public List&lt;String&gt; find(String s) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

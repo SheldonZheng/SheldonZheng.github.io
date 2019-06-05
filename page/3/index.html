@@ -232,6 +232,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/19/LeetCode-102-Binary-Tree-Level-Order-Traversal-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/19/LeetCode-102-Binary-Tree-Level-Order-Traversal-题解/" itemprop="url">LeetCode.102.Binary Tree Level Order Traversal 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-19T10:48:39+08:00">
+                2016-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">原题地址</a></p>
+<p>&nbsp;</p>
+<p>题目描述：Given a binary tree, return the <em>level order</em> traversal of its nodes&#8217; values. (ie, from left to right, level by level).</p>
+<p>很简单的层级顺序遍历，思路是构造一个队列，先放入root节点，</p>
+<p>第一次遍历把root节点的左右节点放进去，下一次遍历就是root节点的左右节点的子节点……依次类推。</p>
+<pre>
+public class BinaryTreeLevelOrderTraversal {
+
+    public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) {
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        if(root == null)
+            return result;
+
+        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(root);
+
+        while(queue.peek() != null)
+        {
+            int size = queue.size();
+            List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+            for (int i = 0;i &lt; size;i++)
+            {
+                TreeNode p = queue.poll();
+                list.add(p.val);
+                if(p.left != null)
+                    queue.add(p.left);
+                if(p.right != null)
+                    queue.add(p.right);
+            }
+            result.add(list);
+        }
+        return result;
+    }
+
+    private class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+}</pre>
+
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/18/LeetCode-94-Binary-Tree-Inorder-Traversal-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -902,7 +1064,7 @@ public class ConvertSortedArrayToBST {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
