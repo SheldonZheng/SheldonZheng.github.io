@@ -232,6 +232,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-274-H-Index-H指数-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/LeetCode-274-H-Index-H指数-题解/" itemprop="url">LeetCode.274.H-Index.H指数.题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:19:47+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目地址</p>
+<p>Description:<br>Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.</p>
+<p>According to the definition of h-index on Wikipedia: “A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each.”</p>
+<p>Example:</p>
+<p>Input: citations = [3,0,6,1,5]<br>Output: 3<br>Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had<br>             received 3, 0, 6, 1, 5 citations respectively.<br>             Since the researcher has 3 papers with at least 3 citations each and the remaining<br>             two with no more than 3 citations each, her h-index is 3.<br>Note: If there are several possible values for h, the maximum one is taken as the h-index.</p>
+<p>题解：<br>定义一个新的数组，用来存储 引用次数出现的次数；</p>
+<p>设新数组为hash，hash[i] 就是 i 出现的次数</p>
+<p>比如输入 citations = [3,0,3,0,2,0,3] ， hash[3] 的值就会是3，出现了三次；</p>
+<p>如果记录出现次数的时候，出现了引用次数比所有文章的数量多的数，比如一共发表5篇文章，有一篇文章引用数量是6次，那应该把这个六次记到hash[5]的地方，假设他引用了5次来处理；因为h指数不能大于文章数量；</p>
+<p>然后从数组的后面向前扫描，前一个数的引用次数是后面所有的数加起来的值；判断如果有引用次数大于等于当前数的，那这个数就是h指数了。</p>
+<p>class Solution {<br>    public int hIndex(int[] citations) {<br>        if (citations == null || citations.length == 0) {<br>            return 0;<br>        }</p>
+<pre><code>    int[] hash = new int[citations.length + 1];
+    for (int i : citations) {
+        if (i &gt;= citations.length) {
+            hash[citations.length]++;
+        } else {
+            hash[i]++;
+        }
+    }
+
+    for (int i = hash.length - 1; i &gt; 0; i--) {
+        if (hash[i] &gt;= i) {
+            return i;
+        }
+        hash[i - 1] += hash[i];
+    }
+    return 0;
+}
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-816-Ambiguous-Coordinates-模糊坐标-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1497,172 +1645,6 @@ return r;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/19/LeetCode-103-Binary-Tree-Zigzag-Level-Order-Traversal-题解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HANG ZHENG">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白叶's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/08/19/LeetCode-103-Binary-Tree-Zigzag-Level-Order-Traversal-题解/" itemprop="url">LeetCode.103.Binary Tree Zigzag Level Order Traversal 题解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-19T10:49:55+08:00">
-                2016-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">原题地址</a></p>
-<p>&nbsp;</p>
-<p>题目描述：Given a binary tree, return the <em>zigzag level order</em> traversal of its nodes&#8217; values. (ie, from left to right, then right to left for the next level and alternate between).</p>
-<p>&nbsp;</p>
-<p>给入一个二叉树，通过Zig-Zag遍历返回一个二层的List；</p>
-<p>思路是构造一个队列，先放入root节点，第一次遍历把root节点的左右节点放进去，下一次遍历就是root节点的左右节点的子节点……依次类推；</p>
-<p>因为是Zig-Zag遍历，所以放置一个flag来判断是不是要翻转结果；</p>
-<p>注意开头的root==null的判断；</p>
-<pre>public class BinaryTreeZigzagLevelOrderTraversal {
-
-    public List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) {
-        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
-        int flag = -1;
-        if(root == null)
-            return result;
-
-        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
-        queue.add(root);
-
-        while(queue.peek() != null)
-        {
-            flag = 0 - flag;
-            int size = queue.size();
-            List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-            for (int i = 0;i &lt; size;i++)
-            {
-                TreeNode p = queue.poll();
-                list.add(p.val);
-                if(p.left != null)
-                    queue.add(p.left);
-                if(p.right != null)
-                    queue.add(p.right);
-            }
-            if(flag == -1)
-                Collections.reverse(list);
-            result.add(list);
-        }
-        return result;
-    }
-
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-
-}</pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1713,7 +1695,7 @@ return r;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1724,7 +1706,7 @@ return r;
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>

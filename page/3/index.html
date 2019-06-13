@@ -232,6 +232,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/19/LeetCode-103-Binary-Tree-Zigzag-Level-Order-Traversal-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/19/LeetCode-103-Binary-Tree-Zigzag-Level-Order-Traversal-题解/" itemprop="url">LeetCode.103.Binary Tree Zigzag Level Order Traversal 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-19T10:49:55+08:00">
+                2016-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">原题地址</a></p>
+<p>&nbsp;</p>
+<p>题目描述：Given a binary tree, return the <em>zigzag level order</em> traversal of its nodes&#8217; values. (ie, from left to right, then right to left for the next level and alternate between).</p>
+<p>&nbsp;</p>
+<p>给入一个二叉树，通过Zig-Zag遍历返回一个二层的List；</p>
+<p>思路是构造一个队列，先放入root节点，第一次遍历把root节点的左右节点放进去，下一次遍历就是root节点的左右节点的子节点……依次类推；</p>
+<p>因为是Zig-Zag遍历，所以放置一个flag来判断是不是要翻转结果；</p>
+<p>注意开头的root==null的判断；</p>
+<pre>public class BinaryTreeZigzagLevelOrderTraversal {
+
+    public List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) {
+        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        int flag = -1;
+        if(root == null)
+            return result;
+
+        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(root);
+
+        while(queue.peek() != null)
+        {
+            flag = 0 - flag;
+            int size = queue.size();
+            List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+            for (int i = 0;i &lt; size;i++)
+            {
+                TreeNode p = queue.poll();
+                list.add(p.val);
+                if(p.left != null)
+                    queue.add(p.left);
+                if(p.right != null)
+                    queue.add(p.right);
+            }
+            if(flag == -1)
+                Collections.reverse(list);
+            result.add(list);
+        }
+        return result;
+    }
+
+    private class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
+}</pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2016/08/19/LeetCode-102-Binary-Tree-Level-Order-Traversal-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1064,7 +1230,7 @@ public class ConvertSortedArrayToBST {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1075,7 +1241,7 @@ public class ConvertSortedArrayToBST {
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
