@@ -232,6 +232,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-148-Sort-List-排序链表-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/LeetCode-148-Sort-List-排序链表-题解/" itemprop="url">LeetCode 148 Sort List 排序链表 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:20:04+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目地址</p>
+<p>Description:<br>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<p>Example 1:</p>
+<p>Input: 4-&gt;2-&gt;1-&gt;3<br>Output: 1-&gt;2-&gt;3-&gt;4<br>Example 2:</p>
+<p>Input: -1-&gt;5-&gt;3-&gt;4-&gt;0<br>Output: -1-&gt;0-&gt;3-&gt;4-&gt;5<br>题解:<br>要求对一个链表进行排序，时间复杂度要求O(n log n)，占用常数级空间。</p>
+<p>简单一想，可以把链表里所有的数抽出来放到数组里然后排序，然后重构链表；</p>
+<p>或者直接对链表进行归并排序，但是怎么取中位数呢？</p>
+<p>​ 使用两个指针，一个一次走两步，一个一次走一步，快的那个走到头了，慢的那个就走到中间了；</p>
+<p>然后归并起来就可以了；</p>
+<p>/**</p>
+<ul>
+<li>Definition for singly-linked list.</li>
+<li>public class ListNode {</li>
+<li>int val;</li>
+<li>ListNode next;</li>
+<li>ListNode(int x) { val = x; }</li>
+<li><p>}<br>*/<br>class Solution {<br>  public ListNode sortList(ListNode head) {</p>
+<pre><code>if (head == null || head.next == null) {
+    return head;
+}
+ListNode fast = head,slow = head;
+
+//cut link
+ListNode cut = null;
+
+while (fast != null &amp;&amp; fast.next != null) {
+    cut = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+}
+
+//cut link
+cut.next = null;
+</code></pre></li>
+</ul>
+<pre><code>    return mergeTwoListNode(sortList(head),sortList(slow));
+}
+
+public ListNode mergeTwoListNode(ListNode o ,ListNode t) {
+    ListNode c = new ListNode(-1);
+    ListNode p = c;
+
+    while (o != null &amp;&amp; t != null) {
+        if (o.val &lt; t.val) {
+            p.next = o;
+            o = o.next;
+        } else {
+            p.next = t;
+            t = t.next;
+        }
+        p = p.next;
+    }
+
+    if (o != null) {
+        p.next = o;
+    }
+    if (t != null) {
+        p.next = t;
+    }
+
+    return c.next;
+}
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-274-H-Index-H指数-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1519,132 +1701,6 @@ return r;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2017/05/08/对接第三方调试接口返回HTTP-Code302的坑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HANG ZHENG">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白叶's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/08/对接第三方调试接口返回HTTP-Code302的坑/" itemprop="url">对接第三方调试接口返回HTTP Code302的坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T12:54:20+08:00">
-                2017-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>近日对接一个新的第三方平台，调试他们提供的接口的时候，使用Apache Client总是收不到返回结果,而使用Postman等第三方工具发送同样的headers和body就可以返回结果;</p>
-<p>一开始想的很复杂,直接拿出来Wireshark抓包,一抓包发现返回的竟然是302;</p>
-<p><img src="http://baiye.website/wp-content/uploads/2017/05/WX20170508-125028.png" alt></p>
-<p>图片已经打码处理过了;</p>
-<p>然后用curl -v验证了一下,返回的状态码确实是302,这样会导致不支持重定向的代码没法正常收到结果,而Postman等工具支持重定向,就可以发送请求成功;</p>
-<p>一般而言,API提供方不会返回302,我遇到的这个问题已经让对方修改解决;</p>
-<p><img src="http://baiye.website/wp-content/uploads/2017/05/WX20170508-125236.png" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1695,7 +1751,7 @@ return r;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
