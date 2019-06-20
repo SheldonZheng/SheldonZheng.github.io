@@ -232,6 +232,290 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/LeetCode-830-Positions-of-Large-Groups-较大分组的位置-题解/" itemprop="url">LeetCode 830 Positions of Large Groups 较大分组的位置 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:54:04+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目地址</p>
+<p>830.Positions of Large Groups</p>
+<p>Description<br>In a string S of lowercase letters, these letters form consecutive groups of the same character.</p>
+<p>For example, a string like S = “abbxxxxzyy” has the groups “a”, “bb”, “xxxx”, “z” and “yy”.</p>
+<p>Call a group large if it has 3 or more characters. We would like the starting and ending positions of every large group.</p>
+<p>The final answer should be in lexicographic order.</p>
+<p>Example 1:</p>
+<p>Input: “abbxxxxzzy”<br>Output: [[3,6]]<br>Explanation: “xxxx” is the single large group with starting  3 and ending positions 6.<br>Example 2:</p>
+<p>Input: “abc”<br>Output: []<br>Explanation: We have “a”,”b” and “c” but no large group.<br>Example 3:</p>
+<p>Input: “abcdddeeeeaabbbcd”<br>Output: [[3,5],[6,9],[12,14]]<br>Note: 1 &lt;= S.length &lt;= 1000</p>
+<p>题解<br>按顺序遍历一遍，找出大于三个的数就可以了。</p>
+<p>class Solution {<br>    public List&lt;List<integer>&gt; largeGroupPositions(String S) {<br>        List&lt;List<integer>&gt; res = new ArrayList&lt;&gt;();<br>        if (S == null || S.length() == 0 || S.length() &lt; 3) {<br>            return res;<br>        }<br>        char[] list = S.toCharArray();<br>        char p = list[0];<br>        int s = 0;<br>        int c = 0;<br>        for (int i = 0; i &lt; list.length; i++) {<br>            if (p == list[i]) {<br>                c++;<br>            } else {<br>                p = list[i];<br>                if (c &gt;= 3) {<br>                    List<integer> temp = new ArrayList&lt;&gt;();<br>                    temp.add(s);<br>                    temp.add(i - 1);<br>                    res.add(temp);<br>                }<br>                c = 1;<br>                s = i;<br>            }<br>        }<br>        if (c &gt;= 3) {<br>            List<integer> temp = new ArrayList&lt;&gt;();<br>            temp.add(s);<br>            temp.add(list.length - 1);<br>            res.add(temp);<br>        }<br>        return res;<br>    }<br>}</integer></integer></integer></integer></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-678-Valid-Parenthesis-String-有效的括号字符串-题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HANG ZHENG">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白叶's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/LeetCode-678-Valid-Parenthesis-String-有效的括号字符串-题解/" itemprop="url">LeetCode 678 Valid Parenthesis String 有效的括号字符串 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:20:24+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目地址</p>
+<p>Description<br>Given a string containing only three types of characters: ‘(‘, ‘)’ and ‘*’, write a function to check whether this string is valid. We define the validity of a string by these rules:</p>
+<p>Any left parenthesis ‘(‘ must have a corresponding right parenthesis ‘)’.<br>Any right parenthesis ‘)’ must have a corresponding left parenthesis ‘(‘.<br>Left parenthesis ‘(‘ must go before the corresponding right parenthesis ‘)’.<br>‘*’ could be treated as a single right parenthesis ‘)’ or a single left parenthesis ‘(‘ or an empty string.<br>An empty string is also valid.<br>Example 1:</p>
+<p>Input: “()”<br>Output: True<br>Example 2:</p>
+<p>Input: “(*)”<br>Output: True<br>Example 3:</p>
+<p>Input: “(*))”<br>Output: True<br>Note:</p>
+<p>The string size will be in the range [1, 100].<br>思路：<br>定义两个数，从0开始计数；</p>
+<p>首先从左向右开始遍历，如果遇到*或者左括号，l 这个数+1，如果遇到右括号，-1；</p>
+<p>循环每一次判断l是否小于0，如果有直接返回 false；</p>
+<p>循环出来之后，如果l等于0 ，说明如果把所有的星号当做左括号，满足条件，返回true；</p>
+<p>如果不等于0，继续判断，从右向左开始遍历，如果遇到*或者右括号，r+1，遇到左括号，r-1；</p>
+<p>同样的，如果r小于0 ，直接返回false；</p>
+<p>循环完之后，r不小于0就可以返回true；</p>
+<p>对于r=0的情况，是把*都当做右括号，结果正好；</p>
+<p>对于r&gt;0的情况，把*都当做右括号，右括号会比左括号多；</p>
+<p>但是如果把部分*当成空，右括号就不会多；</p>
+<p>题解：<br>class Solution {<br>    public boolean checkValidString(String s) {<br>        if (s == null || s.length() == 0) {<br>            return true;<br>        }<br>        int l = 0,r = 0;<br>        int n = s.length();<br>        for (int i = 0; i &lt; n; i++) {<br>            if (s.charAt(i) == ‘(‘ || s.charAt(i) == ‘*’) {<br>                l++;<br>            } else {<br>                l–;<br>            }<br>            if (l &lt; 0) {<br>                return false;<br>            }<br>        }</p>
+<pre><code>    if (l == 0) {
+        return true;
+    }
+
+    for (int i = n - 1; i &gt;= 0; i--) {
+        if (s.charAt(i) == &apos;)&apos; || s.charAt(i) == &apos;*&apos;) {
+            r++;
+        } else {
+            r--;
+        }
+        if (r &lt; 0) {
+            return false;
+        }
+    }
+    return true;
+}
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/05/15/LeetCode-148-Sort-List-排序链表-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1417,290 +1701,6 @@ return r;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2017/05/15/删除maillog导致的crond不断建立新的sendmail和postdrop进程-超出最大文件数量限制-宕机问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HANG ZHENG">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白叶's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/15/删除maillog导致的crond不断建立新的sendmail和postdrop进程-超出最大文件数量限制-宕机问题/" itemprop="url">删除maillog导致的crond不断建立新的sendmail和postdrop进程 超出最大文件数量限制 宕机问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T11:56:51+08:00">
-                2017-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>近日把Linode服务器从新加坡机房迁移至日本机房，迁移前尝试清理一些磁盘空间  经过检查 发现/var/spool/postfix/maildrop/ 里面有非常多的小文件 合在一起占了1.6G的磁盘空间</p>
-<p>随便搜了下 说可以删掉 就直接rm -rf掉 之后关闭服务器开始迁移了</p>
-<p>&nbsp;</p>
-<p>迁移之后的第一天  惯例去检查一下/var/log/secure 文件 发现有几万次暴力破解sshd密码的重试……把ssh的端口从默认的22换了另外一个 就没有这些请求了</p>
-<p>当天晚上20：00左右开始出现CPU占用100% 一直持续到第二天早上SS不能用我才发现 此时无法ssh连接上去 只能通过Linode的控制台手动重启</p>
-<p>&nbsp;</p>
-<p>重启之后一切正常 查看是不是有可疑的程序 当时怀疑被种马了  检查了一圈都没啥问题 先放下了</p>
-<p>&nbsp;</p>
-<p>第二天晚上又出现一样的问题 再次重启 惯例检查系统日志 发现/var/log/maillog非常巨大 tail一下这个文件 一会就打印出来一条warn</p>
-<p>&nbsp;</p>
-<p>随后去查了一下sendmail和postdrop相关资料 观察了一会系统 发现crond每几分钟就会开启一个新的sendmail和postdrop进程 初步推断是由于最后开启的进程过多 导致fd被占满</p>
-<p>因为Linux一切都是file fd被占满了导致没法创建新的连接 所以问题出现之时才会无法通过ssh连接</p>
-<p>&nbsp;</p>
-<p>搜索引擎搜了一下 发现/etc/cron.d/sysstat每隔十分钟会定时执行一次 里面的执行命令会报错 一旦报错 就会启动sendmail和postdrop进程;</p>
-<p>&nbsp;</p>
-<p>修复方法：</p>
-<p>/etc/cron.d/sysstat 修改此文件 为里面的每一个命令加上 &amp;&gt;/dev/null   就不会启动sendmail和postdrop进程</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2017/05/08/LeetCode-33-Search-in-Rotated-Sorted-Array题解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HANG ZHENG">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白叶's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/08/LeetCode-33-Search-in-Rotated-Sorted-Array题解/" itemprop="url">LeetCode.33.Search in Rotated Sorted Array题解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T15:53:15+08:00">
-                2017-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="LeetCode-33-Search-in-Rotated-Sorted-Array题解"><a href="#LeetCode-33-Search-in-Rotated-Sorted-Array题解" class="headerlink" title="LeetCode.33.Search in Rotated Sorted Array题解"></a>LeetCode.33.Search in Rotated Sorted Array题解</h2><p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/#/description" target="_blank" rel="noopener">原题地址</a></p>
-<p>假设有一个排序的按未知的旋转轴旋转的数组(比如，0 1 2 4 5 6 7 可能成为4 5 6 7 0 1 2)。给定一个目标值进行搜索，如果在数组中找到目标值返回数组中的索引位置，否则返回-1。</p>
-<p>&nbsp;</p>
-<p>解法很简单 就像二分查找一样 但是因为这个数组是旋转过的 所以要特殊判断一下当前mid的命中位置是不是旋转过的位置，别的处理跟二分查找一样 要注意数组只有一个元素和两个元素的特殊情况处理；</p>
-<pre>public class SearchInRotatedSortedArray {
-
-    public int search(int[] nums, int target) {
-        if (nums == null || nums.length == 0)
-            return -1;
-
-        int start = 0;
-        int end = nums.length - 1;
-        int mid = 0;
-        if(nums[start] == target)
-            return start;
-        if(nums[end] == target)
-            return end;
-        while (start + 1 &lt; end) { mid = start + (end - start) /2; if (nums[mid] == target) return mid; else if (nums[mid] &gt; nums[start]) {
-                if (target &gt;= nums[start] &amp;&amp; target &lt;= nums[mid]) end = mid; else { start = mid; } } else { if (target &gt;= nums[mid] &amp;&amp; target &lt;= nums[end]) {
-                    start = mid;
-                }
-                else {
-                    end = mid;
-                }
-            }
-        }
-
-        return -1;
-    }
-}</pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1751,7 +1751,7 @@ return r;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

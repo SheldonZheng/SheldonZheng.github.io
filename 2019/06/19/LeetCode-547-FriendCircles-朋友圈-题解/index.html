@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode 题解,算法,">
+  <meta name="keywords" content="LeetCode,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode.33.Search in Rotated Sorted Array题解原题地址 假设有一个排序的按未知的旋转轴旋转的数组(比如，0 1 2 4 5 6 7 可能成为4 5 6 7 0 1 2)。给定一个目标值进行搜索，如果在数组中找到目标值返回数组中的索引位置，否则返回-1。 &amp;nbsp; 解法很简单 就像二分查找一样 但是因为这个数组是旋转过的 所以要特殊判断一下当前mid的命">
-<meta name="keywords" content="LeetCode 题解,算法">
+<meta name="description" content="原题地址 Description:There are N students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature. For example, if A is a direct friend of B, and B is a direct f">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode.33.Search in Rotated Sorted Array题解">
-<meta property="og:url" content="http://sheldonzheng.github.io/2017/05/08/LeetCode-33-Search-in-Rotated-Sorted-Array题解/index.html">
+<meta property="og:title" content="LeetCode.547.FriendCircles.朋友圈.题解">
+<meta property="og:url" content="http://sheldonzheng.github.io/2019/06/19/LeetCode-547-FriendCircles-朋友圈-题解/index.html">
 <meta property="og:site_name" content="白叶&#39;s Blog">
-<meta property="og:description" content="LeetCode.33.Search in Rotated Sorted Array题解原题地址 假设有一个排序的按未知的旋转轴旋转的数组(比如，0 1 2 4 5 6 7 可能成为4 5 6 7 0 1 2)。给定一个目标值进行搜索，如果在数组中找到目标值返回数组中的索引位置，否则返回-1。 &amp;nbsp; 解法很简单 就像二分查找一样 但是因为这个数组是旋转过的 所以要特殊判断一下当前mid的命">
+<meta property="og:description" content="原题地址 Description:There are N students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature. For example, if A is a direct friend of B, and B is a direct f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-15T09:12:44.344Z">
+<meta property="og:updated_time" content="2019-06-19T03:46:26.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode.33.Search in Rotated Sorted Array题解">
-<meta name="twitter:description" content="LeetCode.33.Search in Rotated Sorted Array题解原题地址 假设有一个排序的按未知的旋转轴旋转的数组(比如，0 1 2 4 5 6 7 可能成为4 5 6 7 0 1 2)。给定一个目标值进行搜索，如果在数组中找到目标值返回数组中的索引位置，否则返回-1。 &amp;nbsp; 解法很简单 就像二分查找一样 但是因为这个数组是旋转过的 所以要特殊判断一下当前mid的命">
+<meta name="twitter:title" content="LeetCode.547.FriendCircles.朋友圈.题解">
+<meta name="twitter:description" content="原题地址 Description:There are N students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature. For example, if A is a direct friend of B, and B is a direct f">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://sheldonzheng.github.io/2017/05/08/LeetCode-33-Search-in-Rotated-Sorted-Array题解/">
+  <link rel="canonical" href="http://sheldonzheng.github.io/2019/06/19/LeetCode-547-FriendCircles-朋友圈-题解/">
 
 
 
 
 
-  <title>LeetCode.33.Search in Rotated Sorted Array题解 | 白叶's Blog</title>
+  <title>LeetCode.547.FriendCircles.朋友圈.题解 | 白叶's Blog</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2017/05/08/LeetCode-33-Search-in-Rotated-Sorted-Array题解/">
+    <link itemprop="mainEntityOfPage" href="http://sheldonzheng.github.io/2019/06/19/LeetCode-547-FriendCircles-朋友圈-题解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HANG ZHENG">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode.33.Search in Rotated Sorted Array题解</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode.547.FriendCircles.朋友圈.题解</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T15:53:15+08:00">
-                2017-05-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-19T11:44:02+08:00">
+                2019-06-19
               </time>
             
 
@@ -272,6 +272,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode题解/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -300,36 +322,23 @@
       
 
       
-        <h2 id="LeetCode-33-Search-in-Rotated-Sorted-Array题解"><a href="#LeetCode-33-Search-in-Rotated-Sorted-Array题解" class="headerlink" title="LeetCode.33.Search in Rotated Sorted Array题解"></a>LeetCode.33.Search in Rotated Sorted Array题解</h2><p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/#/description" target="_blank" rel="noopener">原题地址</a></p>
-<p>假设有一个排序的按未知的旋转轴旋转的数组(比如，0 1 2 4 5 6 7 可能成为4 5 6 7 0 1 2)。给定一个目标值进行搜索，如果在数组中找到目标值返回数组中的索引位置，否则返回-1。</p>
-<p>&nbsp;</p>
-<p>解法很简单 就像二分查找一样 但是因为这个数组是旋转过的 所以要特殊判断一下当前mid的命中位置是不是旋转过的位置，别的处理跟二分查找一样 要注意数组只有一个元素和两个元素的特殊情况处理；</p>
-<pre>public class SearchInRotatedSortedArray {
+        <p><a href="https://leetcode.com/problems/friend-circles/" target="_blank" rel="noopener">原题地址</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>There are <strong>N</strong> students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature. For example, if A is a <strong>direct</strong> friend of B, and B is a <strong>direct</strong> friend of C, then A is an <strong>indirect</strong> friend of C. And we defined a friend circle is a group of students who are direct or indirect friends.</p>
+<p>Given a <strong>N*N</strong> matrix <strong>M</strong> representing the friend relationship between students in the class. If M[i][j] = 1, then the ith and jth students are <strong>direct</strong> friends with each other, otherwise not. And you have to output the total number of friend circles among all the students.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[[1,1,0],</span><br><span class="line"> [1,1,0],</span><br><span class="line"> [0,0,1]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:The 0th and 1st students are direct friends, so they are in a friend circle. </span><br><span class="line">The 2nd student himself is in a friend circle. So return 2.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[[1,1,0],</span><br><span class="line"> [1,1,1],</span><br><span class="line"> [0,1,1]]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation:The 0th and 1st students are direct friends, the 1st and 2nd students are direct friends, </span><br><span class="line">so the 0th and 2nd students are indirect friends. All of them are in the same friend circle, so return 1.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>N is in range [1,200].</li>
+<li>M[i][i] = 1 for all students.</li>
+<li>If M[i][j] = 1, then M[j][i] = 1.</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解:"></a>题解:</h2><p>定义一个搜索过的数组，用来标记被搜索过的数字，不用重复遍历，然后深度优先，一直向下搜索，直到边界；</p>
+<p>每搜索一次给count++，结果就是朋友圈的个数；</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCircleNum</span><span class="params">(<span class="keyword">int</span>[][] M)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (M == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] auth = <span class="keyword">new</span> <span class="keyword">int</span>[M.length];</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (auth[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                dfs(M,auth,i);</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[][] M,<span class="keyword">int</span>[] auth,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (M[i][j] == <span class="number">1</span> &amp;&amp; auth[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                auth[j] = <span class="number">1</span>;</span><br><span class="line">                dfs(M,auth,j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    public int search(int[] nums, int target) {
-        if (nums == null || nums.length == 0)
-            return -1;
-
-        int start = 0;
-        int end = nums.length - 1;
-        int mid = 0;
-        if(nums[start] == target)
-            return start;
-        if(nums[end] == target)
-            return end;
-        while (start + 1 &lt; end) { mid = start + (end - start) /2; if (nums[mid] == target) return mid; else if (nums[mid] &gt; nums[start]) {
-                if (target &gt;= nums[start] &amp;&amp; target &lt;= nums[mid]) end = mid; else { start = mid; } } else { if (target &gt;= nums[mid] &amp;&amp; target &lt;= nums[end]) {
-                    start = mid;
-                }
-                else {
-                    end = mid;
-                }
-            }
-        }
-
-        return -1;
-    }
-}</pre>
       
     </div>
     
@@ -346,9 +355,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode-题解/" rel="tag"># LeetCode 题解</a>
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -361,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/08/对接第三方调试接口返回HTTP-Code302的坑/" rel="next" title="对接第三方调试接口返回HTTP Code302的坑">
-                <i class="fa fa-chevron-left"></i> 对接第三方调试接口返回HTTP Code302的坑
+              <a href="/2019/06/17/LeetCode-33-SearchInRotatedSortedArray题解/" rel="next" title="LeetCode.33.SearchInRotatedSortedArray题解">
+                <i class="fa fa-chevron-left"></i> LeetCode.33.SearchInRotatedSortedArray题解
               </a>
             
           </div>
@@ -371,8 +378,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/15/删除maillog导致的crond不断建立新的sendmail和postdrop进程-超出最大文件数量限制-宕机问题/" rel="prev" title="删除maillog导致的crond不断建立新的sendmail和postdrop进程 超出最大文件数量限制 宕机问题">
-                删除maillog导致的crond不断建立新的sendmail和postdrop进程 超出最大文件数量限制 宕机问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/20/LeetCode-42-TrappingRainWater-接雨水-题解/" rel="prev" title="LeetCode.42.TrappingRainWater.接雨水.题解">
+                LeetCode.42.TrappingRainWater.接雨水.题解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,7 +512,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-33-Search-in-Rotated-Sorted-Array题解"><span class="nav-number">1.</span> <span class="nav-text">LeetCode.33.Search in Rotated Sorted Array题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code:</span></a></li></ol></div>
             
 
           </div>
